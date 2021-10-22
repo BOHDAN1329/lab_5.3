@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <cmath>
+#include <iomanip>
 using namespace std;
 double h(const double x);
 int main()
@@ -18,6 +19,13 @@ int main()
 	cout << "gk = "; cin >> gk;
 	cout << "n = "; cin >> n;
 
+	cout << fixed;
+
+	cout << " _ _ _ _ _ _ _ _ _ _ _ _" << endl;
+	cout << "|" << setw(5) << "g" << "      |"
+		<< setw(7) << "z" << "    |"
+		<< endl;
+	cout << " _ _ _ _ _ _ _ _ _ _ _ _" << endl;
 	double dg = (gk - gp) / n;
 
 	double g = gp;
@@ -25,7 +33,9 @@ int main()
 	while (g <= gk)
 	{
 		z = h(g * g + 1) + h(g + h(1)) + 1;
-		cout << g << "  " << z << endl;
+		cout << "|" << setw(7) << setprecision(2) << g << " |"
+			<< "|" << setw(10) << setprecision(5) << z << " |"
+			<< endl;
 		g += dg;
 	}
 
@@ -45,7 +55,7 @@ double h(const double x)
 		do
 		{
 			i++;
-				double R = pow(x, i) / (2 * i * (2 * i - 1));
+				double R = (x) / (2 * i * (2 * i - 1));
 			a *= R;
 			S += a;
 		} while (i < 5);
